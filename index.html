@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>The MontyHall Problem</title>
+</head>
+<body>
+    <h1>The Monty Hall Problem</h1>
+</body>
+
+<script>
+    switchCount = 0; 
+    stayCount = 0; 
+    for (var i = 0; i < 1000; i++) {
+        var Car = Math.floor(Math.random() * 3); 
+        document.write("The Car is in position: " + Car + "<br>");
+    
+        var choice = Math.ceil(Math.random() * 3); 
+        document.write("The contestant chose door: " + choice + "<br>");
+
+        var left = Math.ceil(Math.random() * 3) ; 
+        
+        while (left == choice || left == Car) {
+            left = Math.ceil(Math.random() * 3); 
+        }
+        document.write("The host left door: " + left + "<br>");
+
+        
+        if (choice == Car) {
+            stayCount++;
+            document.write("<p style='color:red;'>The contestant should stay!<br></p>");
+        }
+        else {
+            switchCount++;
+            document.write("<p style='color:green;'>The contestant should switch!<br></p>");
+        }
+        document.write("<br>");
+    }
+
+document.write("The contestant should switch " + (switchCount/1000).toFixed(2) * 100 + "% times<br>");
+document.write("The contestant should stay " + (stayCount/1000).toFixed(2) * 100 + "% +  times<br>");
+</script>
+</html>
